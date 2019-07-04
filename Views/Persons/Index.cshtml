@@ -1,0 +1,76 @@
+﻿@model IEnumerable<BLCPrinter.PERSOANE>
+
+@{
+    ViewBag.Title = "Lista persoane";
+}
+
+<h2>Lista persone</h2>
+
+<p>
+    @Html.ActionLink("Adauga persoana noua", "Create")
+</p>
+<table class="tbList">
+<thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.P_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P_NUME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P_PRENUME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P_CNP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P_ID_TYPE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P_ID_VALUE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P_DATA_NASTERII)
+        </th>       
+        <th>
+            @Html.DisplayNameFor(model => model.P_JUDET)
+        </th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.P_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P_NUME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P_PRENUME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P_CNP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LIBRARIE.L_NUME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P_ID_VALUE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P_DATA_NASTERII)
+        </td>        
+        <td>
+            @Html.DisplayFor(modelItem => item.P_JUDET)
+        </td>        
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.P_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.P_ID })
+        </td>
+    </tr>
+}
+</tbody>
+</table>

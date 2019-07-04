@@ -1,0 +1,28 @@
+﻿@model BLCPrinter.PERSOANE
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Sunteti sigur(a) ca doriti sa stergeti aceasta persoana?</h3>
+<fieldset>
+    <legend>PERSOANE</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.P_ID):&nbsp@Html.DisplayFor(model => model.P_ID)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.P_NUME):&nbsp@Html.DisplayFor(model => model.P_NUME)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.P_PRENUME):&nbsp@Html.DisplayFor(model => model.P_PRENUME)
+    </div>    
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Sterge" /> |
+        @Html.ActionLink("Inapoi la lista", "Index")
+    </p>
+}

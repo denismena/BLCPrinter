@@ -1,0 +1,36 @@
+﻿@model BLCPrinter.LIBRARIE
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>LIBRARIE</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.L_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.L_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.L_NUME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.L_NUME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.L_TIP)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.L_TIP)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

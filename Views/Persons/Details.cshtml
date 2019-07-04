@@ -1,0 +1,99 @@
+﻿@model BLCPrinter.PERSOANE
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>PERSOANE</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.P_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.P_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.P_NUME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.P_NUME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.P_PRENUME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.P_PRENUME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.P_CNP)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.P_CNP)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LIBRARIE.L_NUME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LIBRARIE.L_NUME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.P_DATA_NASTERII)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.P_DATA_NASTERII)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.P_ADRESA)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.P_ADRESA)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.P_JUDET)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.P_JUDET)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.P_ORAS)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.P_ORAS)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.P_TEL)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.P_TEL)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.P_EMAIL)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.P_EMAIL)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.P_ID_VALUE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.P_ID_VALUE)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,155 @@
+﻿@model BLCPrinter.CONTRACTE
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>CONTRACTE</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.C_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.C_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.C_NUMAR)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.C_NUMAR)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.C_DATA)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.C_DATA)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PERSOANE.P_NUME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PERSOANE.P_NUME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.C_NR_PERS)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.C_NR_PERS)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.C_NR_ADULTI)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.C_NR_ADULTI)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.C_NR_COPII)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.C_NR_COPII)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.C_TARA)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.C_TARA)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.C_ORAS)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.C_ORAS)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.C_DE_LA_DATA)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.C_DE_LA_DATA)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.C_PANA_LA_DATA)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.C_PANA_LA_DATA)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.C_HOTEL)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.C_HOTEL)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.C_HOTEL_STELE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.C_HOTEL_STELE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.C_MENTIUNI)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.C_MENTIUNI)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.C_PRET)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.C_PRET)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.C_MONEDA)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.C_MONEDA)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.C_AVANS)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.C_AVANS)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.C_DATA_DIFERENTA)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.C_DATA_DIFERENTA)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.C_FACTURA)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.C_FACTURA)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.C_CHITANTA)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.C_CHITANTA)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

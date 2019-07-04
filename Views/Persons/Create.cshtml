@@ -1,0 +1,113 @@
+﻿@model BLCPrinter.PERSOANE
+
+@{
+    ViewBag.Title = "Adauga persoana";
+}
+
+<h2>Adauga persoana</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>PERSOANE</legend>
+        <div style="width: 50%; float: left">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.P_NUME)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.P_NUME)
+                @Html.ValidationMessageFor(model => model.P_NUME)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.P_PRENUME)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.P_PRENUME)
+                @Html.ValidationMessageFor(model => model.P_PRENUME)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.P_CNP)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.P_CNP)
+                @Html.ValidationMessageFor(model => model.P_CNP)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.P_ID_TYPE, "Tip indentificare")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("P_ID_TYPE", String.Empty)
+                @Html.ValidationMessageFor(model => model.P_ID_TYPE)     
+            &nbsp;&nbsp;&nbsp;                       
+            @*</div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.P_ID_VALUE)
+            </div>
+            <div class="editor-field">*@
+                @Html.TextBoxFor(model => model.P_ID_VALUE, new { style="width:220px", align ="right", data="test" })
+                @Html.ValidationMessageFor(model => model.P_ID_VALUE)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.P_DATA_NASTERII)
+            </div>
+            <div class="editor-field">
+                @*@Html.EditorFor(model => model.P_DATA_NASTERII)*@
+                @Html.TextBoxFor(model => model.P_DATA_NASTERII, new { @class = "datefield" })
+                @Html.ValidationMessageFor(model => model.P_DATA_NASTERII)
+            </div>
+        </div>
+        <div style="width: 50%; float: right">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.P_ADRESA)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.P_ADRESA)
+                @Html.ValidationMessageFor(model => model.P_ADRESA)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.P_ORAS)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.P_ORAS)
+                @Html.ValidationMessageFor(model => model.P_ORAS)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.P_JUDET)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.P_JUDET)
+                @Html.ValidationMessageFor(model => model.P_JUDET)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.P_TEL)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.P_TEL)
+                @Html.ValidationMessageFor(model => model.P_TEL)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.P_EMAIL)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.P_EMAIL)
+                @Html.ValidationMessageFor(model => model.P_EMAIL)
+            </div>
+        </div>
+        <p>
+            <input type="submit" value="Salveaza" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Inapoi la lista", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/scripts/jqueryval")
+}

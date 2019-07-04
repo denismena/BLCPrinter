@@ -1,0 +1,97 @@
+﻿@model IEnumerable<BLCPrinter.CONTRACTE>
+
+@{
+    ViewBag.Title = "Lista contracte";
+}
+
+<h2>Lista contracte</h2>
+
+<p>
+    @Html.ActionLink("Adauga contract nou", "Create")
+</p>
+<table class="tbList" style="width:100%">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.C_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.C_NUMAR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.C_DATA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PERSOANE.P_NUME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.C_NR_PERS)
+        </th>        
+        <th>
+            @Html.DisplayNameFor(model => model.C_TARA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.C_ORAS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.C_DE_LA_DATA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.C_PANA_LA_DATA)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.C_PRET)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.C_MONEDA)
+        </th>        
+        <th></th>
+    </tr>
+        </thead>
+    <tbody>
+@foreach (var item in Model) {    
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.C_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.C_NUMAR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.C_DATA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PERSOANE.P_NUME) &nbsp;
+            @Html.DisplayFor(modelItem => item.PERSOANE.P_PRENUME)            
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.C_NR_PERS)
+        </td>        
+        <td>
+            @Html.DisplayFor(modelItem => item.C_TARA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.C_ORAS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.C_DE_LA_DATA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.C_PANA_LA_DATA)
+        </td>        
+        <td>
+            @Html.DisplayFor(modelItem => item.C_PRET)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LIBRARIE.L_NUME)
+        </td>        
+        <td style="width:150px">
+            @Html.ActionLink("Edit", "Edit", new { id=item.C_ID }) |
+            @Html.ActionLink("PDF", "Details", new { id = item.C_ID }, new { target="_blank" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.C_ID })
+        </td>
+    </tr>
+}
+        </tbody>
+</table>

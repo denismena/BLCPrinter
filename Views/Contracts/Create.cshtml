@@ -1,0 +1,220 @@
+﻿@model BLCPrinter.CONTRACTE
+
+@{
+    ViewBag.Title = "Adauga contract nou";
+}
+
+<h2>Adauga contract nou</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>CONTRACTE</legend>      
+        <div align="center">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.C_NUMAR)            
+                @Html.TextBoxFor(model => model.C_NUMAR, new {style="width:80px; text-align:right"})
+                @Html.Label("/")
+                @Html.ValidationMessageFor(model => model.C_NUMAR)
+                @Html.TextBoxFor(model => model.C_DATA, "{0:dd/MMM/yyyy}", new { @class = "datefield",style="width:100px" })
+                @Html.ValidationMessageFor(model => model.C_DATA)
+            </div>
+        </div>
+        <div style="width: 50%; float: left">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.C_PERSOANA_ID, "Client")
+            </div>
+            <div class="editor-field">
+                @*@Html.DropDownList("C_PERSOANA_ID", String.Empty)*@
+                @Html.TextBox("PERS_NAME", "", new { @class = "autocomplete", style = "width:450px" })
+                @Html.HiddenFor(model => model.C_PERSOANA_ID)
+                @Html.ValidationMessageFor(model => model.C_PERSOANA_ID)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.C_NR_PERS)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.C_NR_PERS)
+                @Html.ValidationMessageFor(model => model.C_NR_PERS)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.C_NR_ADULTI)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.C_NR_ADULTI)
+                @Html.ValidationMessageFor(model => model.C_NR_ADULTI)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.C_NR_COPII)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.C_NR_COPII)
+                @Html.ValidationMessageFor(model => model.C_NR_COPII)
+            </div>
+              
+            <div class="editor-label">
+                @Html.Label("Servicii")
+            </div>
+            <div class="editor-field">
+                <table style="width: 100%">
+                    <tr>
+                        @{
+                        int cnt = 0;
+                List<BLCPrinter.LIBRARIE> courses = ViewBag.ListaServicii;
+
+                        foreach (var course in courses)
+                        {
+                            if (cnt++ % 2 == 0)
+                            {
+                                    @:  </tr> <tr> 
+                                }
+                                @: <td> 
+                                    <input type="checkbox" 
+                                           name="selectedServices" 
+                                           value="@course.L_ID" 
+                                           /> 
+                                    @course.L_NUME
+                                @:</td>
+                            }
+                            @: </tr>
+                        }
+                </table>
+            </div>
+        </div>
+        <div style="width: 50%; float: right">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.C_TARA)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.C_TARA)
+                @Html.ValidationMessageFor(model => model.C_TARA)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.C_ORAS)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.C_ORAS)
+                @Html.ValidationMessageFor(model => model.C_ORAS)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.C_DE_LA_DATA)
+            </div>
+            <div class="editor-field">
+                @*@Html.EditorFor(model => model.C_DE_LA_DATA)*@
+                @Html.TextBoxFor(model => model.C_DE_LA_DATA, "{0:dd/MMM/yyyy}", new { @class = "datefield" })
+                @Html.ValidationMessageFor(model => model.C_DE_LA_DATA)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.C_PANA_LA_DATA)
+            </div>
+            <div class="editor-field">
+                @*@Html.EditorFor(model => model.C_PANA_LA_DATA)*@
+                @Html.TextBoxFor(model => model.C_PANA_LA_DATA, "{0:dd/MMM/yyyy}", new { @class = "datefield" })
+                @Html.ValidationMessageFor(model => model.C_PANA_LA_DATA)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.C_HOTEL)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.C_HOTEL)
+                @Html.ValidationMessageFor(model => model.C_HOTEL)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.C_HOTEL_STELE)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.C_HOTEL_STELE)
+                @Html.ValidationMessageFor(model => model.C_HOTEL_STELE)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.C_MENTIUNI)
+            </div>
+            <div class="editor-field">
+                @Html.TextAreaFor(model => model.C_MENTIUNI)
+                @Html.ValidationMessageFor(model => model.C_MENTIUNI)
+            </div>
+        </div>
+        <div style="width:100%; float:left">
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(model => model.C_PRET)</td>
+                    <td>@Html.LabelFor(model => model.C_MONEDA)</td>
+                </tr>
+                <tr>
+                    <td>@Html.TextBoxFor(model => model.C_PRET, new { style="width:100px" })
+                @Html.ValidationMessageFor(model => model.C_PRET)</td>
+                    <td colspan="4">@Html.DropDownList("C_MONEDA", String.Empty)
+                @Html.ValidationMessageFor(model => model.C_MONEDA)</td>
+                </tr>            
+                <tr>
+                    <td>@Html.LabelFor(model => model.C_AVANS_DATA)</td>
+                    <td>@Html.LabelFor(model => model.C_AVANS)</td>
+                    <td>@Html.LabelFor(model => model.C_FACTURA)</td>
+                    <td>@Html.LabelFor(model => model.C_CHITANTA)</td>
+                    <td>@Html.LabelFor(model => model.C_DATA_DIFERENTA)</td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.TextBoxFor(model => model.C_AVANS_DATA, "{0:dd/MMM/yyyy}", new { @class = "datefield",style="width:100px" })
+                        @Html.ValidationMessageFor(model => model.C_AVANS_DATA)
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.C_AVANS, new { style="width:70px" })
+                        @Html.ValidationMessageFor(model => model.C_AVANS)
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.C_FACTURA, new { style="width:70px" })
+                        @Html.ValidationMessageFor(model => model.C_FACTURA)
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.C_CHITANTA, new { style="width:70px" })
+                        @Html.ValidationMessageFor(model => model.C_CHITANTA)
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.C_DATA_DIFERENTA, "{0:dd/MMM/yyyy}", new { @class = "datefield",style="width:100px" })
+                        @Html.ValidationMessageFor(model => model.C_DATA_DIFERENTA)
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div style="width:100%;float:left">
+        <p><input type="submit" value="Salveaza" /></p>
+         </div>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Inapoi la lista", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/scripts/jqueryval")
+    <script>
+        $(function () {            
+            //$(this).attr("data-autocomplete")
+            $("#PERS_NAME").autocomplete({
+                source: 'Autocomplete',
+                minChars: 2,
+                mustMatch: true,
+                select: function (event, ui) {
+                    var zipCodeID = parseInt(ui.item.value, 1);
+                    $(this).val(ui.item.label);
+                    $("#C_PERSOANA_ID").val(ui.item.value);
+                    return false;
+                }
+            });
+            //$(".datefield").formatDate();
+        });
+    </script>
+}

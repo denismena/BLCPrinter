@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "Incasari";
+}
+
+<h2>Incasari</h2>
+@using (Html.BeginForm())
+{
+<div style="margin: 0 auto; width:500px;">
+    <label>From Date: </label>
+    @*<input type="date" class="datefield" style="width:100px" value="@(((DateTime?)(ViewBag.CurrentFilter)))" id="txtFromDate" runat="server" />*@
+    @Html.TextBox("fromDate", ((DateTime?)ViewBag.CurrentFilter), new { @class = "datefield", style="width: 85px;" })
+    &nbsp;&nbsp;
+    <label>To Date:</label>
+    @*<input type="date"  class="datefield"  style="width:100px" value="@DateTime.Today.AddDays(1).ToString("dd/MMM/yyyy")" id="txtToDate" runat="server"/>*@
+    @Html.TextBox("toDate", ViewBag.CurrentFilter as DateTime?, new { @class = "datefield", style="width: 85px;" })
+    &nbsp;&nbsp;
+    <input type="submit" value="Cauta" />
+</div>
+}
+<table class="tbList" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.Label("Contract")
+            </th>
+            <th>
+                @Html.Label("Nune")
+            </th>
+            <th>
+                @Html.Label("Avans data")
+            </th>
+            <th>
+                @Html.Label("Avans")
+            </th>
+            <th>
+                @Html.Label("Factura")
+            </th>
+            <th>
+                @Html.Label("Chitanta")
+            </th>
+            <th>
+                @Html.Label("Data diferenta")
+            </th>
+        </tr>
+        </thead>
+    <tbody>
+        @foreach (var item in ViewBag.ListIncasari)
+        {
+            <tr>
+                <td>
+                    @Html.Encode(item.C_NUMAR) &nbsp;/&nbsp;
+                    @if (item.C_DATA != null)
+                {
+                        @Html.Encode(item.C_DATA.ToString("dd/MMM/yyyy"))
+                    }
+                </td>
+                <td>
+                    @Html.Encode(item.P_NUME) &nbsp; @Html.Encode(item.P_PRENUME)
+                </td>
+                <td>
+                    @if (item.C_AVANS_DATA != null)
+                {
+                        @Html.Encode(item.C_AVANS_DATA.ToString("dd/MMM/yyyy"))
+                    }
+                </td>
+                <td>
+                    @Html.Encode(item.C_AVANS)
+                </td>
+                <td>
+                    @Html.Encode(item.C_FACTURA)
+                </td>
+                <td>
+                    @Html.Encode(item.C_CHITANTA)
+                </td>
+                <td>
+                    @if (item.C_DATA_DIFERENTA != null)
+                {
+                        @Html.Encode(item.C_DATA_DIFERENTA.ToString("dd/MMM/yyyy"))
+                    }
+                </td>
+            </tr>
+        }
+        <tr>
+            <td><h3>Total:</h3></td>
+            <td><h3> @ViewBag.Total</h3></td>
+            <td colspan="3"></td>
+        </tr>
+    </tbody>
+</table>

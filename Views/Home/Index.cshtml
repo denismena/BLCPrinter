@@ -1,0 +1,80 @@
+﻿@model IEnumerable<BLCPrinter.CONTRACTE>
+@{
+    ViewBag.Title = "Home Page";
+}
+@section scadenta {
+    <section class="scadenta">
+        <table>
+            <tr><th colspan="2" style="text-align:center">Scandente</th></tr>
+            <tr>
+                <th>
+                    Contract
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.C_DATA_DIFERENTA)
+                </th>
+                <th>
+                    Rest
+                </th>
+            </tr>
+            @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.ActionLink(
+                item.C_NUMAR + " - " +
+                item.PERSOANE.P_NUME + " " +
+                item.PERSOANE.P_PRENUME
+                    , "Edit", "Contracts", new { id = item.C_ID }, new { style = "text-decoration:none" })
+                @*@Html.DisplayFor(modelItem => item.C_NUMAR) @Html.Encode(" - ")                
+                @Html.DisplayFor(modelItem => item.P_NUME) @Html.Encode(" ")
+                @Html.DisplayFor(modelItem => item.P_PRENUME)*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.C_DATA_DIFERENTA)
+            </td>
+            <td>
+                @item.REST 
+            </td>
+        </tr>
+        }
+        </table>
+    </section>
+}
+<h3>We suggest the following:</h3>
+<ol class="round">
+    <li>Design - pus iconuri la add/edit/delete
+    </li>
+    <li>Design- table header si cell border
+    </li>
+    <li>slide la dreapta cu urmatoarele date scadente
+    </li>
+    <li>raport cu incasati pe perioada
+    </li>
+    @*<li>
+        la un contract sa se poata atasa mai multe avansuri
+    </li>*@
+    <li>cum sa arate lista de servicii la printarea contractului
+    </li>
+    @*<li class="one">
+        <h5>Getting Started</h5>
+        ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+        enables a clean separation of concerns and that gives you full control over markup
+        for enjoyable, agile development. ASP.NET MVC includes many features that enable
+        fast, TDD-friendly development for creating sophisticated applications that use
+        the latest web standards.
+        <a href="http://go.microsoft.com/fwlink/?LinkId=245151">Learn more…</a>
+    </li>
+
+    <li class="two">
+        <h5>Add NuGet packages and jump-start your coding</h5>
+        NuGet makes it easy to install and update free libraries and tools.
+        <a href="http://go.microsoft.com/fwlink/?LinkId=245153">Learn more…</a>
+    </li>
+
+    <li class="three">
+        <h5>Find Web Hosting</h5>
+        You can easily find a web hosting company that offers the right mix of features
+        and price for your applications.
+        <a href="http://go.microsoft.com/fwlink/?LinkId=245157">Learn more…</a>
+    </li>*@
+</ol>

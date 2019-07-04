@@ -1,0 +1,43 @@
+﻿@model BLCPrinter.CONTRACTE
+
+@{
+    ViewBag.Title = "Sterge contract";
+}
+
+<h2>Sterge contract</h2>
+
+<h3>Sunteti sigur(a) ca doriti sa stergeti acest contract?</h3>
+<fieldset>
+    <legend>CONTRACTE</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.C_ID): &nbsp; @Html.DisplayFor(model => model.C_ID)
+    </div>    
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.C_NUMAR): &nbsp;@Html.DisplayFor(model => model.C_NUMAR)
+    </div>    
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.C_DATA): &nbsp;@Html.DisplayFor(model => model.C_DATA)
+    </div>    
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PERSOANE.P_NUME): &nbsp;@Html.DisplayFor(model => model.PERSOANE.P_NUME)
+    </div>        
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.C_TARA): &nbsp;@Html.DisplayFor(model => model.C_TARA)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.C_ORAS): &nbsp;@Html.DisplayFor(model => model.C_ORAS)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.C_DE_LA_DATA): &nbsp;@Html.DisplayFor(model => model.C_DE_LA_DATA)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.C_PANA_LA_DATA): &nbsp; @Html.DisplayFor(model => model.C_PANA_LA_DATA)
+    </div>    
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Sterge" /> |
+        @Html.ActionLink("Inapoi la lista", "Index")
+    </p>
+}
