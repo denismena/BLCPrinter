@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
-using System.Globalization;
 using System.Web.Mvc;
-using System.Web.Security;
 
 namespace BLCPrinter.Models
 {
@@ -52,7 +48,7 @@ namespace BLCPrinter.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm new password")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
 
@@ -85,7 +81,7 @@ namespace BLCPrinter.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
 
