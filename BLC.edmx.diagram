@@ -15,6 +15,8 @@
         <AssociationConnector Association="BLCModel.FK_SERVICII_CONTRACT_LIBRARIE" ManuallyRouted="false" />
         <AssociationConnector Association="BLCModel.FK_CONTRACTE_LIBRARIE" />
         <EntityTypeShape EntityType="BLCModel.Incasari" Width="1.5" PointX="0.93560906543191957" PointY="28.082156835162152" />
+        <EntityTypeShape EntityType="BLCModel.PERSOANE_EXTRA" Width="1.5" PointX="7.75" PointY="6" />
+        <AssociationConnector Association="BLCModel.FK_PERSOANE_EXTRA_PERSOANE_EXTRA" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

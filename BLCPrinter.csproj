@@ -206,11 +206,11 @@
     <Compile Include="PERSOANE.cs">
       <DependentUpon>BLC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SERVICII_CONTRACT.cs">
+    <Compile Include="PERSOANE_EXTRA.cs">
       <DependentUpon>BLC.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagram.cs">
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SERVICII_CONTRACT.cs">
       <DependentUpon>BLC.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -293,7 +293,9 @@
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\DenisCompiled.pubxml" />
     <None Include="Properties\PublishProfiles\release.pubxml" />
+    <Content Include="Images\calendar.png" />
     <Content Include="Images\logo.jpg" />
+    <Content Include="scripts.txt" />
     <Content Include="Scripts\BLC.js" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />

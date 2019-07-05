@@ -40,6 +40,17 @@
           <Property Name="C_FACTURA3" Type="varchar" MaxLength="50" />
           <Property Name="C_CHITANTA3" Type="varchar" MaxLength="50" />
           <Property Name="C_DATA_DIFERENTA3" Type="date" />
+          <Property Name="C_MIJLOC_TRANSPORT" Type="varchar" MaxLength="50" />
+          <Property Name="C_ORA_PLECARE" Type="datetime" />
+          <Property Name="C_LOCUL_PLECARE" Type="varchar" MaxLength="50" />
+          <Property Name="C_ORA_SOSIRE" Type="datetime" />
+          <Property Name="C_LOCUL_SOSIRE" Type="varchar" MaxLength="50" />
+          <Property Name="C_ORA_PLECARE2" Type="datetime" />
+          <Property Name="C_LOCUL_PLECARE2" Type="varchar" MaxLength="50" />
+          <Property Name="C_ORA_SOSIRE2" Type="datetime" />
+          <Property Name="C_LOCUL_SOSIRE2" Type="varchar" MaxLength="50" />
+          <Property Name="C_ALTE_MENTIUNI" Type="varchar(max)" />
+          <Property Name="C_AGENTIE" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="LIBRARIE">
           <Key>
@@ -66,6 +77,16 @@
           <Property Name="P_TEL" Type="varchar" MaxLength="50" />
           <Property Name="P_EMAIL" Type="varchar" MaxLength="50" />
           <Property Name="P_ID_VALUE" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PERSOANE_EXTRA">
+          <Key>
+            <PropertyRef Name="PE_ID" />
+          </Key>
+          <Property Name="PE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PE_CONTRACT_ID" Type="int" Nullable="false" />
+          <Property Name="PE_NUME" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PE_DATA_NASTERII" Type="datetime" />
+          <Property Name="PE_COPIL" Type="varchar" MaxLength="1" />
         </EntityType>
         <EntityType Name="SERVICII_CONTRACT">
           <Key>
@@ -121,6 +142,18 @@ warning 6002: The table/view 'appdenis.dbo.Incasari' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PERSOANE_EXTRA_PERSOANE_EXTRA">
+          <End Role="CONTRACTE" Type="Self.CONTRACTE" Multiplicity="1" />
+          <End Role="PERSOANE_EXTRA" Type="Self.PERSOANE_EXTRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONTRACTE">
+              <PropertyRef Name="C_ID" />
+            </Principal>
+            <Dependent Role="PERSOANE_EXTRA">
+              <PropertyRef Name="PE_CONTRACT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PERSOANE_LIBRARIE">
           <End Role="LIBRARIE" Type="Self.LIBRARIE" Multiplicity="0..1" />
           <End Role="PERSOANE" Type="Self.PERSOANE" Multiplicity="*" />
@@ -163,6 +196,7 @@ warning 6002: The table/view 'appdenis.dbo.Incasari' does not have a primary key
           <EntitySet Name="CONTRACTE" EntityType="Self.CONTRACTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LIBRARIE" EntityType="Self.LIBRARIE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PERSOANE" EntityType="Self.PERSOANE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PERSOANE_EXTRA" EntityType="Self.PERSOANE_EXTRA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SERVICII_CONTRACT" EntityType="Self.SERVICII_CONTRACT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Incasari" EntityType="Self.Incasari" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -186,6 +220,10 @@ FROM [dbo].[Incasari] AS [Incasari]</DefiningQuery>
           <AssociationSet Name="FK_CONTRACTE_PERSOANE" Association="Self.FK_CONTRACTE_PERSOANE">
             <End Role="PERSOANE" EntitySet="PERSOANE" />
             <End Role="CONTRACTE" EntitySet="CONTRACTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERSOANE_EXTRA_PERSOANE_EXTRA" Association="Self.FK_PERSOANE_EXTRA_PERSOANE_EXTRA">
+            <End Role="CONTRACTE" EntitySet="CONTRACTE" />
+            <End Role="PERSOANE_EXTRA" EntitySet="PERSOANE_EXTRA" />
           </AssociationSet>
           <AssociationSet Name="FK_PERSOANE_LIBRARIE" Association="Self.FK_PERSOANE_LIBRARIE">
             <End Role="LIBRARIE" EntitySet="LIBRARIE" />
@@ -230,6 +268,11 @@ FROM [dbo].[Incasari] AS [Incasari]</DefiningQuery>
             <End Role="CONTRACTE" EntitySet="CONTRACTEs" />
           </AssociationSet>
           <EntitySet Name="Incasaris" EntityType="BLCModel.Incasari" />
+          <EntitySet Name="PERSOANE_EXTRA" EntityType="BLCModel.PERSOANE_EXTRA" />
+          <AssociationSet Name="FK_PERSOANE_EXTRA_PERSOANE_EXTRA" Association="BLCModel.FK_PERSOANE_EXTRA_PERSOANE_EXTRA">
+            <End Role="CONTRACTE" EntitySet="CONTRACTEs" />
+            <End Role="PERSOANE_EXTRA" EntitySet="PERSOANE_EXTRA" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="CONTRACTE">
           <Key>
@@ -269,6 +312,18 @@ FROM [dbo].[Incasari] AS [Incasari]</DefiningQuery>
           <Property Type="String" Name="C_FACTURA3" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="C_CHITANTA3" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="C_DATA_DIFERENTA3" Precision="0" />
+          <Property Name="C_MIJLOC_TRANSPORT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="C_ORA_PLECARE" Type="DateTime" Precision="3" />
+          <Property Name="C_LOCUL_PLECARE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="C_ORA_SOSIRE" Type="DateTime" Precision="3" />
+          <Property Name="C_LOCUL_SOSIRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="C_ORA_PLECARE2" Type="DateTime" Precision="3" />
+          <Property Name="C_LOCUL_PLECARE2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="C_ORA_SOSIRE2" Type="DateTime" Precision="3" />
+          <Property Name="C_LOCUL_SOSIRE2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="C_ALTE_MENTIUNI" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="C_AGENTIE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PERSOANE_EXTRA" Relationship="BLCModel.FK_PERSOANE_EXTRA_PERSOANE_EXTRA" FromRole="CONTRACTE" ToRole="PERSOANE_EXTRA" />
         </EntityType>
         <EntityType Name="LIBRARIE">
           <Key>
@@ -391,6 +446,29 @@ FROM [dbo].[Incasari] AS [Incasari]</DefiningQuery>
           <Property Type="String" Name="P_PRENUME" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="P_TEL" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="PERSOANE_EXTRA">
+          <Key>
+            <PropertyRef Name="PE_ID" />
+          </Key>
+          <Property Name="PE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PE_CONTRACT_ID" Type="Int32" Nullable="false" />
+          <Property Name="PE_NUME" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PE_DATA_NASTERII" Type="DateTime" Precision="3" />
+          <Property Name="PE_COPIL" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CONTRACTE" Relationship="BLCModel.FK_PERSOANE_EXTRA_PERSOANE_EXTRA" FromRole="PERSOANE_EXTRA" ToRole="CONTRACTE" />
+        </EntityType>
+        <Association Name="FK_PERSOANE_EXTRA_PERSOANE_EXTRA">
+          <End Type="BLCModel.CONTRACTE" Role="CONTRACTE" Multiplicity="1" />
+          <End Type="BLCModel.PERSOANE_EXTRA" Role="PERSOANE_EXTRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONTRACTE">
+              <PropertyRef Name="C_ID" />
+            </Principal>
+            <Dependent Role="PERSOANE_EXTRA">
+              <PropertyRef Name="PE_CONTRACT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -400,6 +478,17 @@ FROM [dbo].[Incasari] AS [Incasari]</DefiningQuery>
           <EntitySetMapping Name="CONTRACTEs">
             <EntityTypeMapping TypeName="BLCModel.CONTRACTE">
               <MappingFragment StoreEntitySet="CONTRACTE">
+                <ScalarProperty Name="C_AGENTIE" ColumnName="C_AGENTIE" />
+                <ScalarProperty Name="C_ALTE_MENTIUNI" ColumnName="C_ALTE_MENTIUNI" />
+                <ScalarProperty Name="C_LOCUL_SOSIRE2" ColumnName="C_LOCUL_SOSIRE2" />
+                <ScalarProperty Name="C_ORA_SOSIRE2" ColumnName="C_ORA_SOSIRE2" />
+                <ScalarProperty Name="C_LOCUL_PLECARE2" ColumnName="C_LOCUL_PLECARE2" />
+                <ScalarProperty Name="C_ORA_PLECARE2" ColumnName="C_ORA_PLECARE2" />
+                <ScalarProperty Name="C_LOCUL_SOSIRE" ColumnName="C_LOCUL_SOSIRE" />
+                <ScalarProperty Name="C_ORA_SOSIRE" ColumnName="C_ORA_SOSIRE" />
+                <ScalarProperty Name="C_LOCUL_PLECARE" ColumnName="C_LOCUL_PLECARE" />
+                <ScalarProperty Name="C_ORA_PLECARE" ColumnName="C_ORA_PLECARE" />
+                <ScalarProperty Name="C_MIJLOC_TRANSPORT" ColumnName="C_MIJLOC_TRANSPORT" />
                 <ScalarProperty Name="C_DATA_DIFERENTA3" ColumnName="C_DATA_DIFERENTA3" />
                 <ScalarProperty Name="C_CHITANTA3" ColumnName="C_CHITANTA3" />
                 <ScalarProperty Name="C_FACTURA3" ColumnName="C_FACTURA3" />
@@ -485,6 +574,17 @@ FROM [dbo].[Incasari] AS [Incasari]</DefiningQuery>
                 <ScalarProperty Name="C_AVANS" ColumnName="C_AVANS" />
                 <ScalarProperty Name="C_AVANS_DATA" ColumnName="C_AVANS_DATA" />
                 <ScalarProperty Name="c_id" ColumnName="c_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PERSOANE_EXTRA">
+            <EntityTypeMapping TypeName="BLCModel.PERSOANE_EXTRA">
+              <MappingFragment StoreEntitySet="PERSOANE_EXTRA">
+                <ScalarProperty Name="PE_COPIL" ColumnName="PE_COPIL" />
+                <ScalarProperty Name="PE_DATA_NASTERII" ColumnName="PE_DATA_NASTERII" />
+                <ScalarProperty Name="PE_NUME" ColumnName="PE_NUME" />
+                <ScalarProperty Name="PE_CONTRACT_ID" ColumnName="PE_CONTRACT_ID" />
+                <ScalarProperty Name="PE_ID" ColumnName="PE_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

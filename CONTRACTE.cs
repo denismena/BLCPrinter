@@ -12,12 +12,12 @@ namespace BLCPrinter
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-
     public partial class CONTRACTE
     {
         public CONTRACTE()
         {
             this.SERVICII_CONTRACT = new HashSet<SERVICII_CONTRACT>();
+            this.PERSOANE_EXTRA = new HashSet<PERSOANE_EXTRA>();
         }
 
         [Key]
@@ -131,8 +131,33 @@ namespace BLCPrinter
 
         public Nullable<decimal> REST { get { return C_PRET - ((C_AVANS ?? 0) + (C_AVANS2 ?? 0) + (C_AVANS3 ?? 0)); } }
 
+        [Display(Name = "Mijloc transport")]
+        public string C_MIJLOC_TRANSPORT { get; set; }
+        [Display(Name = "Ora Plecare")]
+        public Nullable<System.DateTime> C_ORA_PLECARE { get; set; }
+        [Display(Name = "Loc Plecare")]
+        public string C_LOCUL_PLECARE { get; set; }
+        [Display(Name = "Ora Sosire")]
+        public Nullable<System.DateTime> C_ORA_SOSIRE { get; set; }
+        [Display(Name = "Loc Sosire")]
+        public string C_LOCUL_SOSIRE { get; set; }
+        [Display(Name = "Ora Plecare")]
+        public Nullable<System.DateTime> C_ORA_PLECARE2 { get; set; }
+        [Display(Name = "Loc Plecare")]
+        public string C_LOCUL_PLECARE2 { get; set; }
+        [Display(Name = "Ora Sosire")]
+        public Nullable<System.DateTime> C_ORA_SOSIRE2 { get; set; }
+        [Display(Name = "Loc Sosire")]
+        public string C_LOCUL_SOSIRE2 { get; set; }
+
+        [Display(Name = "Alte Mentiuni")]
+        public string C_ALTE_MENTIUNI { get; set; }
+        [Display(Name = "Agentie")]
+        public string C_AGENTIE { get; set; }
+    
         public virtual PERSOANE PERSOANE { get; set; }
         public virtual ICollection<SERVICII_CONTRACT> SERVICII_CONTRACT { get; set; }
         public virtual LIBRARIE LIBRARIE { get; set; }
+        public virtual ICollection<PERSOANE_EXTRA> PERSOANE_EXTRA { get; set; }
     }
 }

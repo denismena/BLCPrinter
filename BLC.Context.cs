@@ -29,7 +29,7 @@ namespace BLCPrinter
         public DbSet<LIBRARIE> LIBRARIEs { get; set; }
         public DbSet<PERSOANE> PERSOANEs { get; set; }
         public DbSet<SERVICII_CONTRACT> SERVICII_CONTRACT { get; set; }
-        public DbSet<sysdiagram> sysdiagrams { get; set; }
         public DbSet<Incasari> Incasaris { get; set; }
+        public DbSet<PERSOANE_EXTRA> PERSOANE_EXTRA { get; set; }
     }
 }

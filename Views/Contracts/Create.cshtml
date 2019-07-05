@@ -3,90 +3,88 @@
 @{
     ViewBag.Title = "Adauga contract nou";
 }
-
 <h2>Adauga contract nou</h2>
 
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>CONTRACTE</legend>      
-        <div align="center">
-            <div class="editor-label">
-                @Html.LabelFor(model => model.C_NUMAR)            
-                @Html.TextBoxFor(model => model.C_NUMAR, new {style="width:80px; text-align:right"})
-                @Html.Label("/")
-                @Html.ValidationMessageFor(model => model.C_NUMAR)
-                @Html.TextBoxFor(model => model.C_DATA, "{0:dd/MMM/yyyy}", new { @class = "datefield",style="width:100px" })
-                @Html.ValidationMessageFor(model => model.C_DATA)
-            </div>
+<fieldset>
+    <legend>Contract</legend>
+    <div align="center">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.C_NUMAR)
+            @Html.TextBoxFor(model => model.C_NUMAR, new { style = "width:80px; text-align:right" })
+            @Html.Label("/")
+            @Html.ValidationMessageFor(model => model.C_NUMAR)
+            @Html.TextBoxFor(model => model.C_DATA, "{0:dd/MMM/yyyy}", new { @class = "datefield", style = "width:100px" })
+            @Html.ValidationMessageFor(model => model.C_DATA)
         </div>
-        <div style="width: 50%; float: left">
-            <div class="editor-label">
-                @Html.LabelFor(model => model.C_PERSOANA_ID, "Client")
-            </div>
-            <div class="editor-field">
-                @*@Html.DropDownList("C_PERSOANA_ID", String.Empty)*@
-                @Html.TextBox("PERS_NAME", "", new { @class = "autocomplete", style = "width:450px" })
-                @Html.HiddenFor(model => model.C_PERSOANA_ID)
-                @Html.ValidationMessageFor(model => model.C_PERSOANA_ID)
-            </div>
+    </div>
+    <div style="width: 35%; float: left">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.C_PERSOANA_ID, "Client")
+        </div>
+        <div class="editor-field">
+            @*@Html.DropDownList("C_PERSOANA_ID", String.Empty)*@
+            @Html.TextBox("PERS_NAME", "", new { @class = "autocomplete", style = "width:450px" })
+            @Html.HiddenFor(model => model.C_PERSOANA_ID)
+            @Html.ValidationMessageFor(model => model.C_PERSOANA_ID)
+        </div>
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.C_NR_PERS)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.C_NR_PERS)
-                @Html.ValidationMessageFor(model => model.C_NR_PERS)
-            </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.C_NR_PERS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.C_NR_PERS)
+            @Html.ValidationMessageFor(model => model.C_NR_PERS)
+        </div>
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.C_NR_ADULTI)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.C_NR_ADULTI)
-                @Html.ValidationMessageFor(model => model.C_NR_ADULTI)
-            </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.C_NR_ADULTI)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.C_NR_ADULTI)
+            @Html.ValidationMessageFor(model => model.C_NR_ADULTI)
+        </div>
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.C_NR_COPII)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.C_NR_COPII)
-                @Html.ValidationMessageFor(model => model.C_NR_COPII)
-            </div>
-              
-            <div class="editor-label">
-                @Html.Label("Servicii")
-            </div>
-            <div class="editor-field">
-                <table style="width: 100%">
-                    <tr>
-                        @{
+        <div class="editor-label">
+            @Html.LabelFor(model => model.C_NR_COPII)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.C_NR_COPII)
+            @Html.ValidationMessageFor(model => model.C_NR_COPII)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Servicii")
+        </div>
+        <div class="editor-field">
+            <table style="width: 100%">
+                <tr>
+                    @{
                         int cnt = 0;
-                List<BLCPrinter.LIBRARIE> courses = ViewBag.ListaServicii;
+                        List<BLCPrinter.LIBRARIE> courses = ViewBag.ListaServicii;
 
                         foreach (var course in courses)
                         {
                             if (cnt++ % 2 == 0)
                             {
-                                    @:  </tr> <tr> 
-                                }
-                                @: <td> 
-                                    <input type="checkbox" 
-                                           name="selectedServices" 
-                                           value="@course.L_ID" 
-                                           /> 
-                                    @course.L_NUME
-                                @:</td>
+                            @:  </tr> <tr>
                             }
-                            @: </tr>
+                            @: <td>
+                                <input type="checkbox"
+                                       name="selectedServices"
+                                       value="@course.L_ID" />
+                                @course.L_NUME
+                            @:</td>
                         }
+                    @: </tr>
+                    }
                 </table>
             </div>
         </div>
-        <div style="width: 50%; float: right">
+        <div style="width: 35%; float: left">
             <div class="editor-label">
                 @Html.LabelFor(model => model.C_TARA)
             </div>
@@ -145,6 +143,47 @@
                 @Html.ValidationMessageFor(model => model.C_MENTIUNI)
             </div>
         </div>
+        <div style="width: 35%; float: right; vertical-align:top">
+            <fieldset>
+                <legend>Persoane Extra</legend>
+                <div id="divExtraPers"></div>
+            </fieldset>
+        </div>
+        <div style="width:100%; float:left; vertical-align:top">
+            <fieldset>
+                <legend>Transport</legend>
+                <table>
+                    <tr>
+                        <td>@Html.LabelFor(model => model.C_MIJLOC_TRANSPORT)</td>
+                        <td>@Html.LabelFor(model => model.C_LOCUL_PLECARE)</td>
+                        <td>@Html.LabelFor(model => model.C_ORA_PLECARE)</td>
+                        <td>@Html.LabelFor(model => model.C_LOCUL_SOSIRE)</td>
+                        <td>@Html.LabelFor(model => model.C_ORA_SOSIRE)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.EditorFor(model => model.C_MIJLOC_TRANSPORT)</td>
+                        <td>@Html.EditorFor(model => model.C_LOCUL_PLECARE)</td>
+                        <td>@Html.TextBoxFor(model => model.C_ORA_PLECARE, new { @type = "time" })</td>
+                        <td>@Html.EditorFor(model => model.C_LOCUL_SOSIRE)</td>
+                        <td>@Html.TextBoxFor(model => model.C_ORA_SOSIRE, new { @type = "time" })</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>@Html.LabelFor(model => model.C_LOCUL_PLECARE2)</td>
+                        <td>@Html.LabelFor(model => model.C_ORA_PLECARE2)</td>
+                        <td>@Html.LabelFor(model => model.C_LOCUL_SOSIRE2)</td>
+                        <td>@Html.LabelFor(model => model.C_ORA_SOSIRE2)</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>@Html.EditorFor(model => model.C_LOCUL_PLECARE2)</td>
+                        <td>@Html.TextBoxFor(model => model.C_ORA_PLECARE2, new { @type = "time" })</td>
+                        <td>@Html.EditorFor(model => model.C_LOCUL_SOSIRE2)</td>
+                        <td>@Html.TextBoxFor(model => model.C_ORA_SOSIRE2, new { @type = "time" })</td>
+                    </tr>
+                </table>                
+            </fieldset>
+        </div>
         <div style="width:100%; float:left">
             <table>
                 <tr>
@@ -152,46 +191,50 @@
                     <td>@Html.LabelFor(model => model.C_MONEDA)</td>
                 </tr>
                 <tr>
-                    <td>@Html.TextBoxFor(model => model.C_PRET, new { style="width:100px" })
-                @Html.ValidationMessageFor(model => model.C_PRET)</td>
-                    <td colspan="4">@Html.DropDownList("C_MONEDA", String.Empty)
-                @Html.ValidationMessageFor(model => model.C_MONEDA)</td>
-                </tr>            
-                <tr>
-                    <td>@Html.LabelFor(model => model.C_AVANS_DATA)</td>
-                    <td>@Html.LabelFor(model => model.C_AVANS)</td>
-                    <td>@Html.LabelFor(model => model.C_FACTURA)</td>
-                    <td>@Html.LabelFor(model => model.C_CHITANTA)</td>
-                    <td>@Html.LabelFor(model => model.C_DATA_DIFERENTA)</td>
-                </tr>
-                <tr>
                     <td>
-                        @Html.TextBoxFor(model => model.C_AVANS_DATA, "{0:dd/MMM/yyyy}", new { @class = "datefield",style="width:100px" })
-                        @Html.ValidationMessageFor(model => model.C_AVANS_DATA)
-                    </td>
-                    <td>
-                        @Html.TextBoxFor(model => model.C_AVANS, new { style="width:70px" })
-                        @Html.ValidationMessageFor(model => model.C_AVANS)
-                    </td>
-                    <td>
-                        @Html.TextBoxFor(model => model.C_FACTURA, new { style="width:70px" })
-                        @Html.ValidationMessageFor(model => model.C_FACTURA)
-                    </td>
-                    <td>
-                        @Html.TextBoxFor(model => model.C_CHITANTA, new { style="width:70px" })
-                        @Html.ValidationMessageFor(model => model.C_CHITANTA)
-                    </td>
-                    <td>
-                        @Html.TextBoxFor(model => model.C_DATA_DIFERENTA, "{0:dd/MMM/yyyy}", new { @class = "datefield",style="width:100px" })
-                        @Html.ValidationMessageFor(model => model.C_DATA_DIFERENTA)
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div style="width:100%;float:left">
+                        @Html.TextBoxFor(model => model.C_PRET, new { style = "width:100px" })
+                    @Html.ValidationMessageFor(model => model.C_PRET)
+                </td>
+                <td colspan="4">
+                    @Html.DropDownList("C_MONEDA", String.Empty)
+                    @Html.ValidationMessageFor(model => model.C_MONEDA)
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.C_AVANS_DATA)</td>
+                <td>@Html.LabelFor(model => model.C_AVANS)</td>
+                <td>@Html.LabelFor(model => model.C_FACTURA)</td>
+                <td>@Html.LabelFor(model => model.C_CHITANTA)</td>
+                <td>@Html.LabelFor(model => model.C_DATA_DIFERENTA)</td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.TextBoxFor(model => model.C_AVANS_DATA, "{0:dd/MMM/yyyy}", new { @class = "datefield", style = "width:100px" })
+                    @Html.ValidationMessageFor(model => model.C_AVANS_DATA)
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.C_AVANS, new { style = "width:70px" })
+                    @Html.ValidationMessageFor(model => model.C_AVANS)
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.C_FACTURA, new { style = "width:70px" })
+                    @Html.ValidationMessageFor(model => model.C_FACTURA)
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.C_CHITANTA, new { style = "width:70px" })
+                    @Html.ValidationMessageFor(model => model.C_CHITANTA)
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.C_DATA_DIFERENTA, "{0:dd/MMM/yyyy}", new { @class = "datefield", style = "width:100px" })
+                    @Html.ValidationMessageFor(model => model.C_DATA_DIFERENTA)
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="width:100%;float:left">
         <p><input type="submit" value="Salveaza" /></p>
-         </div>
-    </fieldset>
+    </div>
+</fieldset>
 }
 
 <div>
@@ -201,7 +244,7 @@
 @section Scripts {
     @Scripts.Render("~/scripts/jqueryval")
     <script>
-        $(function () {            
+        $(function () {
             //$(this).attr("data-autocomplete")
             $("#PERS_NAME").autocomplete({
                 source: 'Autocomplete',
@@ -214,7 +257,25 @@
                     return false;
                 }
             });
-            //$(".datefield").formatDate();
+            $("#C_NR_PERS").change(function () {
+                var nrPers = $(this).val();
+                $("#divExtraPers").html('');
+                for (var i = 0; i < nrPers; i++) {
+                    $("#divExtraPers").append('<input type="text" name="extraPers" /> &nbsp;&nbsp;<input type="text" name="dataNasterii" class="datefield " /><br />');
+                }
+                $('.datefield').datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    showOtherMonths: true,
+                    selectOtherMonths: true,
+                    numberOfMonths: 1,
+                    showOn: 'button',
+                    buttonImage: '../Images/calendar.png',
+                    buttonImageOnly: true,
+                    dateFormat: 'dd/M/yy',
+                    showAnim: ''
+                });
+            });
         });
     </script>
 }

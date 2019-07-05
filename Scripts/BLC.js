@@ -5,8 +5,8 @@
         showOtherMonths: true,
         selectOtherMonths: true,
         numberOfMonths: 1,
-        //showOn: 'button',
-        //buttonImage: 'images/Calendar_scheduleHS.png',        
+        showOn: 'button',
+        buttonImage: '../Images/calendar.png',
         buttonImageOnly: true,
         dateFormat: 'dd/M/yy',
         showAnim: ''

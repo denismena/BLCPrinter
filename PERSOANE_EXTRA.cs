@@ -12,12 +12,14 @@ namespace BLCPrinter
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagram
+    public partial class PERSOANE_EXTRA
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int PE_ID { get; set; }
+        public int PE_CONTRACT_ID { get; set; }
+        public string PE_NUME { get; set; }
+        public Nullable<System.DateTime> PE_DATA_NASTERII { get; set; }
+        public string PE_COPIL { get; set; }
+    
+        public virtual CONTRACTE CONTRACTE { get; set; }
     }
 }
