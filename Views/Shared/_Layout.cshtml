@@ -36,12 +36,9 @@
         </header>
         <div id="body" >
             @RenderSection("featured", required: false)
-            <div class="content-wrapper main-content clear-fix"style=" display:inline-block; margin-left:50px;">
+            <div class="content-wrapper clear-fix"style=" display:inline-block; margin-left:50px;">
                 @RenderBody()
-            </div>
-            <div style="display:table-column; width:400px; float:right;">
-                @RenderSection("scadenta", required: false)
-            </div>
+            </div>            
         </div>
         <footer>
             <div class="content-wrapper">
