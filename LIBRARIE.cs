@@ -28,7 +28,9 @@ namespace BLCPrinter
         public string L_NUME { get; set; }
         [Display(Name = "Tip")]
         public string L_TIP { get; set; }
-    
+        [Display(Name = "Info")]
+        public string L_INFO { get; set; }
+
         public virtual ICollection<PERSOANE> PERSOANEs { get; set; }
         public virtual ICollection<SERVICII_CONTRACT> SERVICII_CONTRACT { get; set; }
         public virtual ICollection<CONTRACTE> CONTRACTEs { get; set; }

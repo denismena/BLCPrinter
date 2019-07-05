@@ -9,33 +9,38 @@
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>LIBRARIE</legend>
+<fieldset>
+    <legend>LIBRARIE</legend>
 
-        <div class="editor-label">
-            @Html.HiddenFor(model => model.L_ID)
-        </div>        
+    <div class="editor-label">
+        @Html.HiddenFor(model => model.L_ID)
+    </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.L_NUME)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.L_NUME)
-            @Html.ValidationMessageFor(model => model.L_NUME)
-        </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.L_NUME)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.L_NUME)
+        @Html.ValidationMessageFor(model => model.L_NUME)
+    </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.L_TIP)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.L_TIP)
-            @Html.ValidationMessageFor(model => model.L_TIP)
-        </div>
-
-        <p>
-            <input type="submit" value="Save" />
-        </p>
-    </fieldset>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.L_TIP)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.L_TIP)
+        @Html.ValidationMessageFor(model => model.L_TIP)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.L_INFO)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.L_INFO)
+    </div>
+    <p>
+        <input type="submit" value="Save" />
+    </p>
+</fieldset>
 }
 
 <div>

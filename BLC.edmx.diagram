@@ -9,7 +9,6 @@
         <EntityTypeShape EntityType="BLCModel.LIBRARIE" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BLCModel.PERSOANE" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BLCModel.SERVICII_CONTRACT" Width="1.5" PointX="7.5" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BLCModel.sysdiagram" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
         <AssociationConnector Association="BLCModel.FK_CONTRACTE_PERSOANE" ManuallyRouted="false" />
         <AssociationConnector Association="BLCModel.FK_SERVICII_CONTRACT_CONTRACTE" ManuallyRouted="false" />
         <AssociationConnector Association="BLCModel.FK_PERSOANE_LIBRARIE" ManuallyRouted="false" />
