@@ -9,6 +9,7 @@
         buttonImage: '../Images/calendar.png',
         buttonImageOnly: true,
         dateFormat: 'dd/M/yy',
+        allowInputToggle: true,
         showAnim: ''
     });    
     //$(this).attr("data-autocomplete")

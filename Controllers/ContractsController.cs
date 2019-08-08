@@ -409,7 +409,7 @@ namespace BLCPrinter.Controllers
                     P_TEL = inc.P_TEL
                 });
             }
-            ViewBag.ListIncasari = incasariModel;
+            ViewBag.ListIncasari = incasariModel.Where(w=>w.C_AVANS.Value > 0);
 
             var total = contractes.Sum(i => i.C_AVANS);
             ViewBag.Total = total;

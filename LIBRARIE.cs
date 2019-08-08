@@ -11,8 +11,7 @@ namespace BLCPrinter
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class LIBRARIE
     {
         public LIBRARIE()
@@ -21,16 +20,12 @@ namespace BLCPrinter
             this.SERVICII_CONTRACT = new HashSet<SERVICII_CONTRACT>();
             this.CONTRACTEs = new HashSet<CONTRACTE>();
         }
-
-        [Display(Name = "ID")]
+    
         public int L_ID { get; set; }
-        [Display(Name = "Nume")]
         public string L_NUME { get; set; }
-        [Display(Name = "Tip")]
         public string L_TIP { get; set; }
-        [Display(Name = "Info")]
         public string L_INFO { get; set; }
-
+    
         public virtual ICollection<PERSOANE> PERSOANEs { get; set; }
         public virtual ICollection<SERVICII_CONTRACT> SERVICII_CONTRACT { get; set; }
         public virtual ICollection<CONTRACTE> CONTRACTEs { get; set; }
