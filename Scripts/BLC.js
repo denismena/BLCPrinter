@@ -6,7 +6,7 @@
         selectOtherMonths: true,
         numberOfMonths: 1,
         showOn: 'button',
-        buttonImage: '../Images/calendar.png',
+        buttonImage: '../../Images/calendar.png',
         buttonImageOnly: true,
         dateFormat: 'dd/M/yy',
         allowInputToggle: true,

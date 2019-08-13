@@ -237,19 +237,28 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\IncasariList.cs" />
     <Compile Include="Models\SelectedServiceContract.cs" />
-    <Compile Include="Models\Utilizatori.cs" />
     <Compile Include="PERSOANE.cs">
-      <DependentUpon>BLC.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PERSOANE_EXTRA.cs">
       <DependentUpon>BLC.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SERVICII_CONTRACT.cs">
       <DependentUpon>BLC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Utilizatori.cs">
+      <DependentUpon>BLC.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BLC.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BLC.edmx</DependentUpon>
+      <LastGenOutput>BLC.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="BLC.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BLC.edmx</DependentUpon>
+      <LastGenOutput>BLC.cs</LastGenOutput>
+    </Content>
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -299,18 +308,8 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BLC.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="BLC.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BLC.edmx</DependentUpon>
-      <LastGenOutput>BLC.Context.cs</LastGenOutput>
-    </Content>
     <Content Include="BLC.edmx.diagram">
       <DependentUpon>BLC.edmx</DependentUpon>
-    </Content>
-    <Content Include="BLC.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BLC.edmx</DependentUpon>
-      <LastGenOutput>BLC.cs</LastGenOutput>
     </Content>
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\DenisCompiled.pubxml" />

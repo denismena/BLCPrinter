@@ -69,7 +69,7 @@ namespace BLCPrinter.Controllers
         {
             using (var db = new BLCEntities())
             {
-                Utilizatori usrExists = db.Utilizatori.Where(u => (u.Email == usr.Email && u.Parola == usr.Parola)).FirstOrDefault();
+                Utilizatori usrExists = db.UTILIZATORIs.Where(u => (u.Email == usr.Email && u.Parola == usr.Parola)).FirstOrDefault();
 
                 if (usrExists != null)
                 {
@@ -174,14 +174,14 @@ namespace BLCPrinter.Controllers
                 ViewBag.ErrMsg = string.Empty;
                 ViewBag.SuccessMsg = string.Empty;
 
-                Utilizatori usr = db.Utilizatori.Where(u => u.Email == ut.Email).FirstOrDefault();
+                Utilizatori usr = db.UTILIZATORIs.Where(u => u.Email == ut.Email).FirstOrDefault();
                 if (usr != null)
                 {
                     ViewBag.ErrMsg = "Adresa de email este deja utilizata";
                 }
                 else
                 {
-                    db.Utilizatori.Add(ut);
+                    db.UTILIZATORIs.Add(ut);
                     db.SaveChanges();
                     ViewBag.SuccessMsg = "Utilizatorul a fost adaugat cu sucess";
                 }
