@@ -142,48 +142,7 @@
                 @Html.TextAreaFor(model => model.C_MENTIUNI)
                 @Html.ValidationMessageFor(model => model.C_MENTIUNI)
             </div>
-        </div>
-        <div style="width: 35%; float: right; vertical-align:top">
-            <fieldset>
-                <legend>Persoane Extra</legend>
-                <div id="divExtraPers"></div>
-            </fieldset>
-        </div>
-        <div style="width:100%; float:left; vertical-align:top">
-            <fieldset>
-                <legend>Transport</legend>
-                <table>
-                    <tr>
-                        <td>@Html.LabelFor(model => model.C_MIJLOC_TRANSPORT)</td>
-                        <td>@Html.LabelFor(model => model.C_LOCUL_PLECARE)</td>
-                        <td>@Html.LabelFor(model => model.C_ORA_PLECARE)</td>
-                        <td>@Html.LabelFor(model => model.C_LOCUL_SOSIRE)</td>
-                        <td>@Html.LabelFor(model => model.C_ORA_SOSIRE)</td>
-                    </tr>
-                    <tr>
-                        <td>@Html.EditorFor(model => model.C_MIJLOC_TRANSPORT)</td>
-                        <td>@Html.EditorFor(model => model.C_LOCUL_PLECARE)</td>
-                        <td>@Html.TextBoxFor(model => model.C_ORA_PLECARE, new { @type = "time" })</td>
-                        <td>@Html.EditorFor(model => model.C_LOCUL_SOSIRE)</td>
-                        <td>@Html.TextBoxFor(model => model.C_ORA_SOSIRE, new { @type = "time" })</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>@Html.LabelFor(model => model.C_LOCUL_PLECARE2)</td>
-                        <td>@Html.LabelFor(model => model.C_ORA_PLECARE2)</td>
-                        <td>@Html.LabelFor(model => model.C_LOCUL_SOSIRE2)</td>
-                        <td>@Html.LabelFor(model => model.C_ORA_SOSIRE2)</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>@Html.EditorFor(model => model.C_LOCUL_PLECARE2)</td>
-                        <td>@Html.TextBoxFor(model => model.C_ORA_PLECARE2, new { @type = "time" })</td>
-                        <td>@Html.EditorFor(model => model.C_LOCUL_SOSIRE2)</td>
-                        <td>@Html.TextBoxFor(model => model.C_ORA_SOSIRE2, new { @type = "time" })</td>
-                    </tr>
-                </table>                
-            </fieldset>
-        </div>
+        </div>        
         <div style="width:100%; float:left">
             <table>
                 <tr>
@@ -270,7 +229,7 @@
                     selectOtherMonths: true,
                     numberOfMonths: 1,
                     showOn: 'button',
-                    buttonImage: '../Images/calendar.png',
+                    buttonImage: '../../Images/calendar.png',
                     buttonImageOnly: true,
                     dateFormat: 'dd/M/yy',
                     showAnim: ''
