@@ -67,9 +67,9 @@ namespace BLCPrinter.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(Utilizatori usr)
         {
-            using (var db = new BLCEntities())
+            using (var db = new BLCEntities1())
             {
-                Utilizatori usrExists = db.UTILIZATORIs.Where(u => (u.Email == usr.Email && u.Parola == usr.Parola)).FirstOrDefault();
+                Utilizatori usrExists = db.Utilizatori.Where(u => (u.Email == usr.Email && u.Parola == usr.Parola)).FirstOrDefault();
 
                 if (usrExists != null)
                 {
@@ -169,19 +169,19 @@ namespace BLCPrinter.Controllers
             //    }
             //    AddErrors(result);
             //}
-            using (var db = new BLCEntities())
+            using (var db = new BLCEntities1())
             {
                 ViewBag.ErrMsg = string.Empty;
                 ViewBag.SuccessMsg = string.Empty;
 
-                Utilizatori usr = db.UTILIZATORIs.Where(u => u.Email == ut.Email).FirstOrDefault();
+                Utilizatori usr = db.Utilizatori.Where(u => u.Email == ut.Email).FirstOrDefault();
                 if (usr != null)
                 {
                     ViewBag.ErrMsg = "Adresa de email este deja utilizata";
                 }
                 else
                 {
-                    db.UTILIZATORIs.Add(ut);
+                    db.Utilizatori.Add(ut);
                     db.SaveChanges();
                     ViewBag.SuccessMsg = "Utilizatorul a fost adaugat cu sucess";
                 }

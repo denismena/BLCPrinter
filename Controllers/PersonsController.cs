@@ -10,13 +10,13 @@ namespace BLCPrinter.Controllers
 {
     public class PersonsController : Controller
     {
-        private BLCEntities db = new BLCEntities();        
+        private BLCEntities1 db = new BLCEntities1();
         //
         // GET: /Persons/
 
         public ActionResult Index()
         {
-            var persoanes = db.PERSOANEs.Include(p => p.LIBRARIE);
+            var persoanes = db.PERSOANE.Include(p => p.LIBRARIE);
             return View(persoanes.ToList());
         }
 
@@ -25,7 +25,7 @@ namespace BLCPrinter.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            PERSOANE persoane = db.PERSOANEs.Find(id);
+            PERSOANE persoane = db.PERSOANE.Find(id);
             if (persoane == null)
             {
                 return HttpNotFound();
@@ -38,7 +38,7 @@ namespace BLCPrinter.Controllers
 
         public ActionResult Create()
         {
-            var idType = from lib in db.LIBRARIEs
+            var idType = from lib in db.LIBRARIE
                          where lib.L_TIP == "ID"
                          select lib;
             ViewBag.P_ID_TYPE = new SelectList(idType, "L_ID", "L_NUME");
@@ -53,12 +53,12 @@ namespace BLCPrinter.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.PERSOANEs.Add(persoane);
+                db.PERSOANE.Add(persoane);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.P_ID_TYPE = new SelectList(db.LIBRARIEs, "L_ID", "L_NUME", persoane.P_ID_TYPE);
+            ViewBag.P_ID_TYPE = new SelectList(db.LIBRARIE, "L_ID", "L_NUME", persoane.P_ID_TYPE);
             return View(persoane);
         }
 
@@ -67,8 +67,8 @@ namespace BLCPrinter.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            PERSOANE persoane = db.PERSOANEs.Find(id);
-            var idType = from lib in db.LIBRARIEs
+            PERSOANE persoane = db.PERSOANE.Find(id);
+            var idType = from lib in db.LIBRARIE
                          where lib.L_TIP == "ID"
                          select lib;
             if (persoane == null)
@@ -91,7 +91,7 @@ namespace BLCPrinter.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.P_ID_TYPE = new SelectList(db.LIBRARIEs, "L_ID", "L_NUME", persoane.P_ID_TYPE);
+            ViewBag.P_ID_TYPE = new SelectList(db.LIBRARIE, "L_ID", "L_NUME", persoane.P_ID_TYPE);
             return View(persoane);
         }
 
@@ -100,7 +100,7 @@ namespace BLCPrinter.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            PERSOANE persoane = db.PERSOANEs.Find(id);
+            PERSOANE persoane = db.PERSOANE.Find(id);
             if (persoane == null)
             {
                 return HttpNotFound();
@@ -114,8 +114,8 @@ namespace BLCPrinter.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            PERSOANE persoane = db.PERSOANEs.Find(id);
-            db.PERSOANEs.Remove(persoane);
+            PERSOANE persoane = db.PERSOANE.Find(id);
+            db.PERSOANE.Remove(persoane);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -124,6 +124,14 @@ namespace BLCPrinter.Controllers
         {
             db.Dispose();
             base.Dispose(disposing);
+        }
+        public ActionResult makeAnonymous(int id)
+        {
+            PERSOANE persoane = db.PERSOANE.Find(id);
+            persoane.P_NUME = "-";
+            persoane.P_PRENUME = "-";
+            db.SaveChanges();
+            return RedirectToAction("Index", "Persons");
         }
     }
 }

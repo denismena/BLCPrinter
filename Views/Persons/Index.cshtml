@@ -67,8 +67,9 @@
             @Html.DisplayFor(modelItem => item.P_JUDET)
         </td>        
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.P_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.P_ID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.P_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.P_ID }) | 
+            @Html.ActionLink("Anonymous", "makeAnonymous", new { id = item.P_ID }, new {onclick = "return confirm('Sunteti siguri ca doriti anonimizarea numelui?');" })
         </td>
     </tr>
 }

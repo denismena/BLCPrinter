@@ -10,8 +10,7 @@
 {
     @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>PERSOANE</legend>
+    <div>
         <div style="width: 50%; float: left">
             @Html.HiddenFor(model => model.P_ID)
             <div class="editor-label">
@@ -102,7 +101,7 @@
         <p>
             <input type="submit" value="Modifica" />
         </p>
-    </fieldset>
+    </div>
 }
 
 <div>

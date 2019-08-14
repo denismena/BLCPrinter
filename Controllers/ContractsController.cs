@@ -17,14 +17,14 @@ namespace BLCPrinter.Controllers
 {
     public class ContractsController : Controller
     {
-        private BLCEntities db = new BLCEntities();
+        private BLCEntities1 db = new BLCEntities1();
 
         //
         // GET: /Contracts/
 
         public ActionResult Autocomplete(string term)
         {
-            var model = (from p in db.PERSOANEs
+            var model = (from p in db.PERSOANE
                          where p.P_NUME.Contains(term) || p.P_PRENUME.Contains(term)
                          select new { label = p.P_NUME + " " + p.P_PRENUME + "(" + p.P_CNP + ")", value = p.P_ID }
                          ).Take(10);
@@ -33,7 +33,7 @@ namespace BLCPrinter.Controllers
 
         public ActionResult Index()
         {
-            var contractes = db.CONTRACTEs.Include(c => c.PERSOANE).OrderByDescending(o=>o.C_DATA);
+            var contractes = db.CONTRACTE.Include(c => c.PERSOANE).OrderByDescending(o=>o.C_DATA);
             return View(contractes.ToList());
         }
 
@@ -42,14 +42,14 @@ namespace BLCPrinter.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            CONTRACTE contracte = db.CONTRACTEs.Find(id);
+            CONTRACTE contracte = db.CONTRACTE.Find(id);
             
             string cale = Request.PhysicalApplicationPath + @"Temp\" + id + ".pdf";
             PdfReader reader = new PdfReader(Request.PhysicalApplicationPath + @"Temp\Contract.pdf");
             PdfStamper stamp1 = new PdfStamper(reader, new FileStream(cale, FileMode.Create));
             AcroFields form1 = stamp1.AcroFields;
 
-            var cntr = (db.CONTRACTEs.Include(c => c.PERSOANE).Include(c=>c.PERSOANE.LIBRARIE).Where(c=>c.C_ID==id)).ToList();
+            var cntr = (db.CONTRACTE.Include(c => c.PERSOANE).Include(c=>c.PERSOANE.LIBRARIE).Where(c=>c.C_ID==id)).ToList();
             var listaServicii = from ls in db.SERVICII_CONTRACT.Include(s => s.LIBRARIE)
                                 where ls.SC_C_ID == id
                                 select ls.LIBRARIE.L_NUME;
@@ -111,11 +111,11 @@ namespace BLCPrinter.Controllers
 
         public ActionResult Create()
         {
-            var servType = from lib in db.LIBRARIEs
+            var servType = from lib in db.LIBRARIE
                            where lib.L_TIP == "SERVICIU"
                          select lib;
             ViewBag.ListaServicii = servType.ToList();
-            var idType = from lib in db.LIBRARIEs
+            var idType = from lib in db.LIBRARIE
                          where lib.L_TIP == "MONEDA"
                          select lib;
             ViewBag.C_MONEDA = new SelectList(idType, "L_ID", "L_NUME");
@@ -127,8 +127,8 @@ namespace BLCPrinter.Controllers
             CONTRACTE cntr = new CONTRACTE();
             cntr.C_DATA = DateTime.Now;
             cntr.C_AVANS_DATA = DateTime.Now;
-            if (db.CONTRACTEs.Count() == 0) cntr.C_NUMAR = 1;
-            else cntr.C_NUMAR = db.CONTRACTEs.Max(c => c.C_NUMAR) + 1;
+            if (db.CONTRACTE.Count() == 0) cntr.C_NUMAR = 1;
+            else cntr.C_NUMAR = db.CONTRACTE.Max(c => c.C_NUMAR) + 1;
             return View(cntr);
         }
 
@@ -140,7 +140,7 @@ namespace BLCPrinter.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.CONTRACTEs.Add(contracte);
+                db.CONTRACTE.Add(contracte);
                 db.SaveChanges();
                 if (selectedServices != null)
                 {
@@ -156,12 +156,12 @@ namespace BLCPrinter.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.C_PERSOANA_ID = new SelectList(db.PERSOANEs, "P_ID", "P_NUME", contracte.C_PERSOANA_ID);
-            var servType = from lib in db.LIBRARIEs
+            ViewBag.C_PERSOANA_ID = new SelectList(db.PERSOANE, "P_ID", "P_NUME", contracte.C_PERSOANA_ID);
+            var servType = from lib in db.LIBRARIE
                            where lib.L_TIP == "SERVICIU"
                            select lib;
             ViewBag.ListaServicii = servType.ToList();
-            var idType = from lib in db.LIBRARIEs
+            var idType = from lib in db.LIBRARIE
                          where lib.L_TIP == "MONEDA"
                          select lib;
             ViewBag.C_MONEDA = new SelectList(idType, "L_ID", "L_NUME", contracte.C_MONEDA);
@@ -173,13 +173,13 @@ namespace BLCPrinter.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            CONTRACTE contracte = db.CONTRACTEs.Find(id);
+            CONTRACTE contracte = db.CONTRACTE.Find(id);
             if (contracte == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.C_PERSOANA_ID = new SelectList(db.PERSOANEs, "P_ID", "P_NUME", contracte.C_PERSOANA_ID);
-            var idType = from lib in db.LIBRARIEs
+            ViewBag.C_PERSOANA_ID = new SelectList(db.PERSOANE, "P_ID", "P_NUME", contracte.C_PERSOANA_ID);
+            var idType = from lib in db.LIBRARIE
                          where lib.L_TIP == "MONEDA"
                          select lib;
             ViewBag.C_MONEDA = new SelectList(idType, "L_ID", "L_NUME", contracte.C_MONEDA);
@@ -194,7 +194,7 @@ namespace BLCPrinter.Controllers
 
         private void PopulateAssignedCourseData(int id)
         {
-            var servType = from lib in db.LIBRARIEs
+            var servType = from lib in db.LIBRARIE
                            where lib.L_TIP == "SERVICIU"
                            select lib;
             var serviceContract = from serv in db.SERVICII_CONTRACT
@@ -244,14 +244,14 @@ namespace BLCPrinter.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.C_PERSOANA_ID = new SelectList(db.PERSOANEs, "P_ID", "P_NUME", contracte.C_PERSOANA_ID);
+            ViewBag.C_PERSOANA_ID = new SelectList(db.PERSOANE, "P_ID", "P_NUME", contracte.C_PERSOANA_ID);
             //ViewBag.C_MONEDA = new SelectList(idType, "L_ID", "L_NUME", contracte.C_MONEDA);
             return View(contracte);
         }
 
         private void updateCoursesService(string[] selectedServices, CONTRACTE contracte)
         {
-            var servType = from lib in db.LIBRARIEs
+            var servType = from lib in db.LIBRARIE
                            where lib.L_TIP == "SERVICIU"
                            select lib;
             var selectedServicesHS = new HashSet<string>(selectedServices);
@@ -277,7 +277,7 @@ namespace BLCPrinter.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            CONTRACTE contracte = db.CONTRACTEs.Find(id);
+            CONTRACTE contracte = db.CONTRACTE.Find(id);
             if (contracte == null)
             {
                 return HttpNotFound();
@@ -291,8 +291,8 @@ namespace BLCPrinter.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            CONTRACTE contracte = db.CONTRACTEs.Find(id);
-            db.CONTRACTEs.Remove(contracte);
+            CONTRACTE contracte = db.CONTRACTE.Find(id);
+            db.CONTRACTE.Remove(contracte);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -301,7 +301,7 @@ namespace BLCPrinter.Controllers
         public ActionResult Incasari(DateTime? fromDate, DateTime? toDate)
         {            
             #region populate incasari
-            var c1 = from c in db.CONTRACTEs
+            var c1 = from c in db.CONTRACTE
                      where c.C_AVANS_DATA.HasValue && c.C_AVANS.HasValue
                      select new
                      {
@@ -322,7 +322,7 @@ namespace BLCPrinter.Controllers
                          P_TEL = c.PERSOANE.P_TEL
                      };
 
-            var c2 = from c in db.CONTRACTEs
+            var c2 = from c in db.CONTRACTE
                      where c.C_AVANS2_DATA.HasValue && c.C_AVANS2.HasValue
                      select new
                      {
@@ -343,7 +343,7 @@ namespace BLCPrinter.Controllers
                          ,
                          P_TEL = c.PERSOANE.P_TEL
                      };
-            var c3 = from c in db.CONTRACTEs
+            var c3 = from c in db.CONTRACTE
                      where c.C_AVANS3_DATA.HasValue && c.C_AVANS3.HasValue
                      select new
                      {
@@ -373,7 +373,7 @@ namespace BLCPrinter.Controllers
                          
 
             var sql = from c in contractes
-                      join p in db.PERSOANEs on c.P_ID equals p.P_ID
+                      join p in db.PERSOANE on c.P_ID equals p.P_ID
                       select new
                       {
                           c.C_ID,

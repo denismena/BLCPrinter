@@ -1,43 +1,46 @@
 ﻿@model IEnumerable<BLCPrinter.CONTRACTE>
-@{
-    ViewBag.Title = "Home Page";
-}
-<h2>Scandente</h2>
-<table class="tbList">
-    <thead>
-        <tr>
-            <th>
-                Contract
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.C_DATA_DIFERENTA)
-            </th>
-            <th>
-                Rest
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.ActionLink(
-                    item.C_NUMAR + " - " +
-                    item.PERSOANE.P_NUME + " " +
-                    item.PERSOANE.P_PRENUME
-                        , "Edit", "Contracts", new { id = item.C_ID }, new { style = "text-decoration:none" })
-                    @*@Html.DisplayFor(modelItem => item.C_NUMAR) @Html.Encode(" - ")
-                    @Html.DisplayFor(modelItem => item.P_NUME) @Html.Encode(" ")
-                    @Html.DisplayFor(modelItem => item.P_PRENUME)*@
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.C_DATA_DIFERENTA)
-                </td>
-                <td>
-                    
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+    @{
+        ViewBag.Title = "Home Page";
+    }
+    <h2>Scandente</h2>
+    @if (Session["UserId"] != null)
+    {
+        <table class="tbList">
+            <thead>
+                <tr>
+                    <th>
+                        Contract
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.C_DATA_DIFERENTA)
+                    </th>
+                    <th>
+                        Rest
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.ActionLink(
+                 item.C_NUMAR + " - " +
+                 item.PERSOANE.P_NUME + " " +
+                 item.PERSOANE.P_PRENUME
+                     , "Edit", "Contracts", new { id = item.C_ID }, new { style = "text-decoration:none" })
+                            @*@Html.DisplayFor(modelItem => item.C_NUMAR) @Html.Encode(" - ")
+                                @Html.DisplayFor(modelItem => item.P_NUME) @Html.Encode(" ")
+                                @Html.DisplayFor(modelItem => item.P_PRENUME)*@
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.C_DATA_DIFERENTA)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.REST)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }

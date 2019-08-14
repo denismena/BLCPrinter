@@ -9,7 +9,7 @@
         <EntityTypeShape EntityType="BLCEntities.LIBRARIE" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BLCEntities.PERSOANE" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BLCEntities.SERVICII_CONTRACT" Width="1.5" PointX="7.5" PointY="10" IsExpanded="true" />
-        <EntityTypeShape EntityType="BLCEntities.Utilizatori" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BLCEntities.Utilizatori" Width="1.5" PointX="6.875" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BLCEntities.Incasari" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="BLCEntities.FK_CONTRACTE_LIBRARIE" ManuallyRouted="false" />
         <AssociationConnector Association="BLCEntities.FK_CONTRACTE_PERSOANE" ManuallyRouted="false" />

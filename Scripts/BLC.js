@@ -5,11 +5,8 @@
         showOtherMonths: true,
         selectOtherMonths: true,
         numberOfMonths: 1,
-        showOn: 'button',
-        buttonImage: '../../Images/calendar.png',
-        buttonImageOnly: true,
+        showOn: 'button',        
         dateFormat: 'dd/M/yy',
-        allowInputToggle: true,
         showAnim: ''
     });    
     //$(this).attr("data-autocomplete")

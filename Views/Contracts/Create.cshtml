@@ -9,8 +9,8 @@
 {
     @Html.ValidationSummary(true)
 
-<fieldset>
-    <legend>Contract</legend>
+<div>
+    
     <div align="center">
         <div class="editor-label">
             @Html.LabelFor(model => model.C_NUMAR)
@@ -193,7 +193,7 @@
     <div style="width:100%;float:left">
         <p><input type="submit" value="Salveaza" /></p>
     </div>
-</fieldset>
+</div>
 }
 
 <div>
@@ -215,26 +215,7 @@
                     $("#C_PERSOANA_ID").val(ui.item.value);
                     return false;
                 }
-            });
-            $("#C_NR_PERS").change(function () {
-                var nrPers = $(this).val();
-                $("#divExtraPers").html('');
-                for (var i = 0; i < nrPers; i++) {
-                    $("#divExtraPers").append('<input type="text" name="extraPers" /> &nbsp;&nbsp;<input type="text" name="dataNasterii" class="datefield " /><br />');
-                }
-                $('.datefield').datepicker({
-                    changeMonth: true,
-                    changeYear: true,
-                    showOtherMonths: true,
-                    selectOtherMonths: true,
-                    numberOfMonths: 1,
-                    showOn: 'button',
-                    buttonImage: '../../Images/calendar.png',
-                    buttonImageOnly: true,
-                    dateFormat: 'dd/M/yy',
-                    showAnim: ''
-                });
-            });
+            });            
         });
     </script>
 }

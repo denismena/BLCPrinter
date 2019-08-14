@@ -132,6 +132,7 @@ namespace BLCPrinter
 
         public Nullable<decimal> REST { get { return C_PRET - ((C_AVANS ?? 0) + (C_AVANS2 ?? 0) + (C_AVANS3 ?? 0)); } }
 
+
         public virtual LIBRARIE LIBRARIE { get; set; }
         public virtual PERSOANE PERSOANE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

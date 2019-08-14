@@ -10,14 +10,14 @@ namespace BLCPrinter.Controllers
 {
     public class LibraryController : Controller
     {
-        private BLCEntities db = new BLCEntities();
+        private BLCEntities1 db = new BLCEntities1();
 
         //
         // GET: /Library/
 
         public ActionResult Index()
         {
-            return View(db.LIBRARIEs.ToList().OrderBy(r=>r.L_TIP));
+            return View(db.LIBRARIE.ToList().OrderBy(r=>r.L_TIP));
         }
 
         //
@@ -25,7 +25,7 @@ namespace BLCPrinter.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            LIBRARIE librarie = db.LIBRARIEs.Find(id);
+            LIBRARIE librarie = db.LIBRARIE.Find(id);
             if (librarie == null)
             {
                 return HttpNotFound();
@@ -49,7 +49,7 @@ namespace BLCPrinter.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.LIBRARIEs.Add(librarie);
+                db.LIBRARIE.Add(librarie);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -62,7 +62,7 @@ namespace BLCPrinter.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            LIBRARIE librarie = db.LIBRARIEs.Find(id);
+            LIBRARIE librarie = db.LIBRARIE.Find(id);
             if (librarie == null)
             {
                 return HttpNotFound();
@@ -90,7 +90,7 @@ namespace BLCPrinter.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            LIBRARIE librarie = db.LIBRARIEs.Find(id);
+            LIBRARIE librarie = db.LIBRARIE.Find(id);
             if (librarie == null)
             {
                 return HttpNotFound();
@@ -104,8 +104,8 @@ namespace BLCPrinter.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            LIBRARIE librarie = db.LIBRARIEs.Find(id);
-            db.LIBRARIEs.Remove(librarie);
+            LIBRARIE librarie = db.LIBRARIE.Find(id);
+            db.LIBRARIE.Remove(librarie);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

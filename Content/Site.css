@@ -163,8 +163,8 @@ footer
 ----------------------------------------------------------*/
 #login {
     display: block;
-    font-size: .85em;
-    margin: 0 0 10px;
+    /*font-size: .85em;*/
+    margin: 20px;
     text-align: right;
 }
 
@@ -635,7 +635,7 @@ tr.pager td {
     }
 
     /* login */
-    #login {
+    /*#login {
         font-size: .85em;
         margin: 0 0 12px;
         text-align: center;
@@ -663,7 +663,7 @@ tr.pager td {
 
         #login a:hover {
             color: #333;
-        }
+        }*/
 
     /* menu */
     nav {

@@ -13,10 +13,10 @@ namespace BLCPrinter
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BLCEntities : DbContext
+    public partial class BLCEntities1 : DbContext
     {
-        public BLCEntities()
-            : base("name=BLCEntities")
+        public BLCEntities1()
+            : base("name=BLCEntities1")
         {
         }
     
@@ -25,11 +25,11 @@ namespace BLCPrinter
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<CONTRACTE> CONTRACTEs { get; set; }
-        public virtual DbSet<LIBRARIE> LIBRARIEs { get; set; }
-        public virtual DbSet<PERSOANE> PERSOANEs { get; set; }
+        public virtual DbSet<CONTRACTE> CONTRACTE { get; set; }
+        public virtual DbSet<LIBRARIE> LIBRARIE { get; set; }
+        public virtual DbSet<PERSOANE> PERSOANE { get; set; }
         public virtual DbSet<SERVICII_CONTRACT> SERVICII_CONTRACT { get; set; }
-        public virtual DbSet<Utilizatori> UTILIZATORIs { get; set; }
-        public virtual DbSet<Incasari> Incasaris { get; set; }
+        public virtual DbSet<Utilizatori> Utilizatori { get; set; }
+        public virtual DbSet<Incasari> Incasari { get; set; }
     }
 }
