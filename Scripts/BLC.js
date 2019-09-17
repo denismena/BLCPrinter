@@ -29,7 +29,15 @@
         "bStateSave": false,
         "bProcessing": true,
         "asStripeClasses": ['odd', 'even'],
-        });
+    });
+    $('.tbList2').dataTable({
+        "searching": false,
+        "paging": false,
+        "bLengthChange": false,
+        "bStateSave": false,
+        "bProcessing": true,
+        "asStripeClasses": ['odd', 'even'],
+    });
 /* formatDate plug-in
 *
 * Parameters:

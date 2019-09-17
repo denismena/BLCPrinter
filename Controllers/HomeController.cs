@@ -14,9 +14,10 @@ namespace BLCPrinter.Controllers
         {
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";            
             var scadente = from c in db.CONTRACTE
-                           where c.C_PRET.Value != ((c.C_AVANS ?? 0) + (c.C_AVANS2 ?? 0) + (c.C_AVANS3 ?? 0))
-                           //where (c.C_AVANS.HasValue && c.C_DATA_DIFERENTA.HasValue && !c.C_AVANS2.HasValue)
-                           //|| (c.C_AVANS2.HasValue && c.C_DATA_DIFERENTA2.HasValue && !c.C_AVANS3.HasValue)
+                           //where c.C_PRET.Value != ((c.C_AVANS ?? 0) + (c.C_AVANS2 ?? 0) + (c.C_AVANS3 ?? 0))
+                           where (c.C_AVANS.HasValue && c.C_DATA_DIFERENTA.HasValue && !c.C_AVANS2.HasValue)
+                           || (c.C_AVANS2.HasValue && c.C_DATA_DIFERENTA2.HasValue && !c.C_AVANS3.HasValue)
+                           orderby c.C_NUMAR
                            select c;
             return View(scadente);
         }

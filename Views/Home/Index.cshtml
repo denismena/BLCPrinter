@@ -5,9 +5,10 @@
     <h2>Scandente</h2>
     @if (Session["UserId"] != null)
     {
-        <table class="tbList">
+        <table class="tbList2">
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>
                         Contract
                     </th>
@@ -20,9 +21,11 @@
                 </tr>
             </thead>
             <tbody>
+                @{int i = 1;}
                 @foreach (var item in Model)
-                {
+                {                    
                     <tr>
+                        <td>@i</td>
                         <td>
                             @Html.ActionLink(
                  item.C_NUMAR + " - " +
@@ -40,6 +43,7 @@
                             @Html.DisplayFor(modelItem => item.REST)
                         </td>
                     </tr>
+                    i++;
                 }
             </tbody>
         </table>
